@@ -31,7 +31,7 @@ with open(budget_filePath, encoding='UTF-8') as csvfile:
     for t in range(1,len(net_Total)):
      revenue_change.append((int(net_Total[t])-int(net_Total[t-1])))
     # calculate average revenue change
-    revenue_average = sum(revenue_change) / len(revenue_change)
+    revenue_average = round(sum(revenue_change) / len(revenue_change),2)
     #calculate  the maximum revenue change
     greatest_profits = max(revenue_change)
     # calculate the minimum revenue change
@@ -47,9 +47,9 @@ print("Total: " + "$" + str(total))
 
 print("Average change: " + "$" + str(revenue_average))
 
-print("Greatest Increase in Profits: " + str(date_monthList[revenue_change.index(max(revenue_change))+1]) + " " + "$" + str(greatest_profits))
+print("Greatest Increase in Profits: " + str(date_monthList[revenue_change.index(max(revenue_change))+1]) + " " + "($" + str(greatest_profits) +")")
 
-print("Greatest Decrease in Profits: " + str(date_monthList[revenue_change.index(min(revenue_change))+1]) + " " + "$" + str(least_profits))
+print("Greatest Decrease in Profits: " + str(date_monthList[revenue_change.index(min(revenue_change))+1]) + " " + "($" + str(least_profits) +")")
 #Adding the results to textfile by opening and writing into the file
 file = open("output.txt", "w")
 file.write("Financial Analysis" + "\n")

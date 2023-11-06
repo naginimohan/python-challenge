@@ -17,22 +17,25 @@ with open(election_filePath, encoding='UTF-8') as csvfile:
     csvreader = csv.reader(csvfile,delimiter = ",")
     #setting header
     csvheader = next(csvreader)
+     #iterating the rows
     for row in csvreader:
         count = count + 1
         totalCandVotes.append(row[2])
         if(row[2] not in candidate_list):
+          #adding the candidates to the list
           candidate_list.append(row[2])
+          #calculating the counts of candidates
         candicount = len(candidate_list)  
         #print(candidate_list)
         #print(count)
     for c in candidate_list:
       votesByCandidates.append(totalCandVotes.count(c))
       #votepercentageByCandidate.append(round((totalCandVotes.count(c)/count)*100,2))  
+      #calculating the average of voting by each candidate
       votepercentageByCandidate.append(totalCandVotes.count(c)/count)
+      #setting the index for winner 
     winnerIndex = votesByCandidates.index(max(votesByCandidates))    
-    #print(votesByCandidates)
-    #print(votepercentageByCandidate)
-    #print(candidate_list[winnerIndex])
+   
 
 # Print the results to terminal
 print("Election Results")
